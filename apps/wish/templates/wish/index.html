@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wishlist</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'travel/css/skeleton.css' %}" media="screen" title="no title"  charset="utf-8">
+    <style>
+    body{
+        background: linear-gradient(rgb(100, 100, 100), white);
+        height: 900px;
+
+    }
+    #login_wrapper{
+        background: rgba(255,255,255, .4);
+        border-radius: 10px;
+        padding: 10%;
+        margin-top: 5%;
+        margin-left: 10%;
+        width: 40%;
+        height: 400px;
+        box-shadow: 1px 1px 20px 5px #a8a7a7 ;
+    }
+    #login_wrapper input{
+        float: right;
+        clear: both;
+    }
+    a{
+        font-size: 16pt;
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    h1{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .messages{
+        color: rgb(231, 5, 5);
+        font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+<div class="container">    
+    <div id="login_wrapper" class="row">
+        <div class="six columns">
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <h1>LOG IN HERE</h1>
+                <p>Email: <input type="email" id="email" name="email"></p>
+                <p>Password: <input type="password" name="password"></p>
+                <!-- <div class="messages">
+                    <p id="message">{{ message }}</p>
+                </div>             -->
+                <input type="submit" id="login" value="Login">
+            </form><br>
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="messages">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <a href="/registration">Don't have an account?</a> 
+        </div>
+    </div>
+</div>    
+</body>
+</html>
